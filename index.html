@@ -33,12 +33,25 @@ style: 'mapbox://styles/csbennett/ck5lc3r091hg31iqihmzxh313',
 center: [-90.0918, 29.94886],
 pitch: 50, // pitch in degrees
 bearing: 25, // bearing in degrees
-zoom: 12.99
+zoom: 12
 });
 
-L.geoJson.ajax("assets/AllThings.geojson", {
-    style: style
-}).addTo(mymap);
+map.on('click', function(e) {
+  var features = map.queryRenderedFeatures(e.point, {
+    layers: ['Things'] // replace this with the name of the layer
+  });
+
+  if (!features.length) {
+    return;
+  }
+
+  var feature = features[0];
+
+  var popup = new mapboxgl.Popup({ offset: [0, -15] })
+    .setLngLat(feature.geometry.coordinates)
+    .setHTML('<h3>' + feature.properties.Name + '</h3><p>' + feature.properties.Notes + '</p>')
+    .addTo(map);
+});
 
 </script>
 
