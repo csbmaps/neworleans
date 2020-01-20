@@ -31,9 +31,9 @@ container: 'map',
 style: 'mapbox://styles/csbennett/ck5lc3r091hg31iqihmzxh313',
 // camera options properties - https://docs.mapbox.com/help/glossary/camera/
 center: [-90.0918, 29.94886],
-pitch: 50, // pitch in degrees
-bearing: 25, // bearing in degrees
-zoom: 12
+pitch: 52, // pitch in degrees
+bearing: 30, // bearing in degrees
+zoom: 13
 });
 
 map.on('click', function(e) {
@@ -52,6 +52,8 @@ map.on('click', function(e) {
     .setHTML('<h3>' + feature.properties.Name + '</h3><p>' + feature.properties.Notes + '</p>')
     .addTo(map);
 });
+
+
 
 </script>
 
